@@ -157,11 +157,13 @@ footer p {
   }
 }
 
+/* Estilos del formulario login, agrego text-algin para centrar todo */
 .signin {
   width: 100%;
   max-width: 330px;
   padding: 15px;
   margin: auto;
+  text-align:center;
 }
 
 #spinner-wrapper {

@@ -39,3 +39,11 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+// Imprime email de usuario en NABVAR
+function printUser (){
+  const contenedorUser = document.getElementById("user_print");
+  contenedorUser.innerHTML = localStorage.getItem("userE");
+}
+printUser();
+// Fin impresion useremail

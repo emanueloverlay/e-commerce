@@ -1,3 +1,11 @@
+function loguedUser(){
+    if (localStorage.getItem('userE') == null) {
+        window.location.href = "login.html";
+    }
+}
+
+loguedUser();
+
 document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("autos").addEventListener("click", function() {
         localStorage.setItem("catID", 101);

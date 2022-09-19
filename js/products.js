@@ -24,14 +24,14 @@ function showProducts(listProducts) {
         ((maxCount == undefined) || (maxCount != undefined && parseInt(products.cost) <= maxCount))){
 
         container.innerHTML += `
-        <div class="list-group-item list-group-item-action cursor-active">
+        <div onclick="setProductID(${products.id})" class="list-group-item list-group-item-action cursor-active">
         <div class="row">
             <div class="col-3">
                 <img src="${products.image}" class="img-thumbnail">
             </div>
             <div class="col">
                 <div class="d-flex w-100 justify-content-between">
-                    <h4 class="mb-1">${products.name} - USD ${products.cost}</h4>
+                    <h4 class="mb-1">${products.name} - ${products.currency} ${products.cost}</h4>
                     <small class="text-muted">${products.soldCount} Vendidos</small>
                 </div>
                 <p class="mb-1">${products.description}</p>
@@ -54,10 +54,6 @@ getJSONData(DATA_URL).then(function(resultObj) {
     }
 });
 });
-
-
-
-
 
 function sortProducts(criteria, array){
     let result = [];
@@ -88,8 +84,6 @@ function sortProducts(criteria, array){
 
     return result;
 }
-
-
 
 function sortAndShowProducts(sortCriteria, productsArray){
     sortProducts(sortCriteria, currentProductsArray);
@@ -141,3 +135,10 @@ document.getElementById("clearRangeFilter").addEventListener("click", function()
     maxCount = undefined;
     showProducts(currentProductsArray);
 });
+
+
+// LOCAL STORAGE PRODUCTO
+function setProductID(id) {
+    localStorage.setItem("productID", id);
+    window.location = "product-info.html"
+}

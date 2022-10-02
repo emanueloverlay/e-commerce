@@ -7,14 +7,29 @@ const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
 
+// FUNCION PARA COMPROBAR USUARIO LOGUEADO
 function loguedUser(){
   if (localStorage.getItem('userE') == null) {
       window.location.href = "login.html";
   }
-}
+};
 
 loguedUser();
 
+// Imprime email de usuario en NABVAR
+function printUser (){
+  const contenedorUser = document.getElementById("user_print");
+  contenedorUser.innerHTML =  localStorage.getItem('userE')
+};
+
+printUser();
+
+// FUNCION PARA CERRAR SESION 
+function clearSession(e){
+  localStorage.removeItem('userE')
+      window.location.href = "login.html";
+};
+// FIN CERRAR SESION
 
 let showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
@@ -48,11 +63,3 @@ let getJSONData = function(url){
         return result;
     });
 }
-
-// Imprime email de usuario en NABVAR
-function printUser (){
-  const contenedorUser = document.getElementById("user_print");
-  contenedorUser.innerHTML = localStorage.getItem("userE");
-}
-printUser();
-// Fin impresion useremail

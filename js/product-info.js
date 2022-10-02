@@ -8,6 +8,7 @@ const PRODUCT_COMMENTS = PRODUCT_INFO_COMMENTS_URL + productID + ".json";
 const contProductInfo = document.getElementById("divProductInfo");
 const contImages = document.getElementById("divImages");
 const contComments = document.getElementById("divComments");
+const contRelProducts = document.getElementById("relatedProductList");
 let currentProduct = [];
 let commentProduct = [];
 
@@ -17,6 +18,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
     if (resultObj.status === "ok") {
       currentProduct = resultObj.data;
       showProduct(currentProduct);
+      for (const productRel of currentProduct.relatedProducts) {
+        listProductRel(productRel);
+      }
     }
   });
 });
@@ -49,13 +53,16 @@ function showProduct(currentProduct) {
         <b>Cantidad de vendidos</b>
         <p> ${currentProduct.soldCount}</p>
         <b>Imágenes ilustrativas</b>
-    </div> `;
+    </div>`
 
   for (const image of currentProduct.images) {
     contImages.innerHTML += `
-        <img src="${image}" class="img-thumbnail m-1" style="width: 300px;">`;
+    <div class="carousel-item">
+    <img src="${image}" class="d-block w-100" alt="...">
+    </div>`
   }
-}
+  document.getElementsByClassName("carousel-item")[0].className += " active";
+};
 
 // FUNCION PARA MOSTRAR COMENTARIOS
 function listCommentProduct(comment) {
@@ -127,8 +134,8 @@ const formNewComment = document.getElementById("commentForm");
 formNewComment.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  let newComment = document.getElementById("comentario").value;
-  let scoreValueComment = document.getElementById("puntuacion").value;
+  let newComment = document.getElementById("commentText").value;
+  let scoreValueComment = document.getElementById("scoreComment").value;
 
   var hoy = new Date();
   var fecha =
@@ -143,3 +150,20 @@ formNewComment.addEventListener("submit", function (event) {
   };
   listCommentProduct(comment);
 });
+
+// FUNCION PARA MOSTRAR PRODUCTOS RELACIONADOS
+function listProductRel(productRel) {
+  contRelProducts.innerHTML += `
+
+    <div class="list-group-item list-group-item-action cursor-active m-3" style="width: 25%;" onclick="setProductID(${productRel.id})">
+        <img src="${productRel.image}" class="img-thumbnail m-1" style="width: 300px;">
+        <p>${productRel.name}</p>
+
+    </div> `;
+  };
+
+  // LOCAL STORAGE PRODUCTO
+function setProductID(id) {
+  localStorage.setItem("productID", id);
+  window.location = "product-info.html"
+}

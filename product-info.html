@@ -46,9 +46,35 @@
             <li class="nav-item">
               <a class="nav-link" href="sell.html">Vender</a>
             </li>
-            <li class="nav-item">
-              <div class="navbar-text" id="user_print"></div>
-            </li>
+            <!-- NAV ITEM CON MENU DE USUARIO -->
+          <li class="nav-item">
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                href="#"
+                role="button"
+                id="user_print"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              ></button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li>
+                  <a class="dropdown-item" href="cart.html">Mi carrito</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="my-profile.html"
+                    >Mi perfil</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" onclick="clearSession()" href="#"
+                    >Cerrar sesión</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </li>
+          <!-- FIN NAV ITEM CON MENU DE USUARIO -->
           </ul>
         </div>
       </div>
@@ -57,7 +83,20 @@
       <div id="container" class="container">
         <!-- CONTENEDORES DE INFO/IMAGENES/COMENTARIOS PRODUCTOS -->
         <div id="divProductInfo"></div>
-        <div id="divImages"></div>
+
+        <div id="carouselExampleControls" class="carousel slide carousel-dark" data-bs-ride="carousel" style="width: 70%; margin-left: 20%;">
+          <div class="carousel-inner" id="divImages">
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
+        </div>
+
         <h4 style="margin-top: 50px">Comentarios</h4>
         <div id="divComments"></div>
         <!-- CONTENEDORES DE INFO/IMAGENES/COMENTARIOS PRODUCTOS -->
@@ -66,17 +105,17 @@
         <form id="commentForm">
           <br />
           <h3>Comentar</h3>
-          <label for="comentario">Tu opinión:</label>
+          <label for="commentText">Tu opinión:</label>
           <textarea
             class="form-control";
-            id="comentario";
+            id="commentText";
             style="width: 50%";
           ></textarea>
-          <label for="puntuacion">Tu puntuación:</label>
+          <label for="scoreComment">Tu puntuación:</label>
           <br />
           <select
-            name="puntuacionScore"
-            id="puntuacion"
+            name="scoreComment"
+            id="scoreComment"
             class="form-select"
             style="width: 15%"
           >
@@ -90,6 +129,11 @@
           <button class="btn btn-primary" type="submit">Enviar</button>
         </form>
         <!-- FIN FORMULARIO DE NUEVOS COMENTARIOS -->
+        <hr>
+        <!-- MUESTREO DE PRODUCTOS RELACIONADOS -->
+        <div id="relatedProductList" class="d-flex">
+        </div>
+        <!-- FIN MUESTREO DE PRODUCTOS RELACIONADOS -->
       </div>
     </main>
     <footer class="text-muted">

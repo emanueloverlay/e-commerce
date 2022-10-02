@@ -30,9 +30,35 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
+          <!-- NAV ITEM CON MENU DE USUARIO -->
           <li class="nav-item">
-            <div class="navbar-text" id="user_print"></div>
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                href="#"
+                role="button"
+                id="user_print"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              ></button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li>
+                  <a class="dropdown-item" href="cart.html">Mi carrito</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="my-profile.html"
+                    >Mi perfil</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" onclick="clearSession()" href="#"
+                    >Cerrar sesión</a
+                  >
+                </li>
+              </ul>
+            </div>
           </li>
+          <!-- FIN NAV ITEM CON MENU DE USUARIO -->
         </ul>
       </div>
     </div>

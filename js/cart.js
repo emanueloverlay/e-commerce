@@ -154,7 +154,7 @@ formCartPayment.addEventListener('submit', event => {
   }
 });
 
-
+// FUNCION PARA VALIDAR PAGO
 function checkPayment() {
   const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
   const typePaymentPrint = document.getElementById("typePaymentPrint");
@@ -184,6 +184,7 @@ function checkPayment() {
   }
 };
 
+// IMPRIME EN PANTALLA QUE EL PAGO SE REALIZÓ CON EXITO
 function paymentProcessSuccessful() {
   const confirmAlertBuy = document.getElementById("confirmAlertBuy")
   confirmAlertBuy.innerHTML =

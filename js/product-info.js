@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
       commentProduct = resultObj.data;
       for (const comment of commentProduct) {
         contComments.innerHTML +=
-            `<div class="card p-3">
+          `<div class="card p-3">
             <p><b>${comment.user}</b> - ${comment.dateTime} - ${addStarsComment(comment.score)}</p>
             <p>${comment.description}</p>
             </div> `;
@@ -113,7 +113,7 @@ formNewComment.addEventListener("submit", function (event) {
     user: localStorage.getItem("userE"),
   };
   contComments.innerHTML +=
-  `<div class="card p-3">
+    `<div class="card p-3">
   <p><b>${comment.user}</b> - ${comment.dateTime} - ${addStarsComment(comment.score)}</p>
   <p>${comment.description}</p>
   </div> `;
@@ -143,7 +143,7 @@ function pushToCart(currentProduct) {
   };
 
   // COMPRUEBA SI EXISTE USERCART EN LOCAL STORAGE
-  if (localStorage.getItem("userCart") == null) { 
+  if (localStorage.getItem("userCart") == null) {
     // SINO CREA EL PRIMER OBJETO (EJEMPLO PEU 208)
     let currentCart = {
       user: 25801,
@@ -162,7 +162,7 @@ function pushToCart(currentProduct) {
       currentCart.articles.push(productToCart); // SI ES DISTINTO, PUSHEA EL OBJETO productToCar A CURRENTCART
       localStorage.setItem("userCart", JSON.stringify(currentCart));
       alert("Agregado al carrito");
-      } else {
+    } else {
       currentCart.articles.count += 1; // SI ES EL MISMO SOLO AUMENTA LA CANTIDAD DEL ART + 1
       localStorage.setItem("userCart", JSON.stringify(currentCart));
       alert("Agregamos otra unidad al carrito");

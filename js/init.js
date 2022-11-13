@@ -8,58 +8,59 @@ const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
 
 // FUNCION PARA COMPROBAR USUARIO LOGUEADO
-function loguedUser(){
-  if (localStorage.getItem('userE') == null) {
-      window.location.href = "login.html";
+function loguedUser() {
+  userDataObj = JSON.parse(localStorage.getItem("userData"));
+  if (userDataObj == null) {
+    window.location.href = "login.html";
   }
 };
 
 loguedUser();
 
 // Imprime email de usuario en NABVAR
-function printUser (){
+function printUser() {
   const contenedorUser = document.getElementById("user_print");
-  contenedorUser.innerHTML =  localStorage.getItem('userE')
+  contenedorUser.innerHTML = userDataObj.email;
 };
 
 printUser();
 
 // FUNCION PARA CERRAR SESION 
-function clearSession(e){
-  localStorage.removeItem('userE')
-      window.location.href = "login.html";
+function clearSession(e) {
+  localStorage.removeItem('userData')
+  window.location.href = "login.html";
 };
 // FIN CERRAR SESION
 
-let showSpinner = function(){
+let showSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "block";
 }
 
-let hideSpinner = function(){
+let hideSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "none";
 }
 
-let getJSONData = function(url){
-    let result = {};
-    showSpinner();
-    return fetch(url)
+let getJSONData = function (url) {
+  let result = {};
+  showSpinner();
+  return fetch(url)
     .then(response => {
       if (response.ok) {
         return response.json();
-      }else{
+      } else {
         throw Error(response.statusText);
       }
     })
-    .then(function(response) {
-          result.status = 'ok';
-          result.data = response;
-          hideSpinner();
-          return result;
+    .then(function (response) {
+      result.status = 'ok';
+      result.data = response;
+      hideSpinner();
+      return result;
     })
-    .catch(function(error) {
-        result.status = 'error';
-        result.data = error;
-        hideSpinner();
-        return result;
+    .catch(function (error) {
+      result.status = 'error';
+      result.data = error;
+      hideSpinner();
+      return result;
     });
 }

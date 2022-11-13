@@ -7,6 +7,7 @@ const telephone = document.getElementById("telephone");
 const formProfile = document.getElementById("formProfile")
 const userImageInput = document.getElementById("userImageInput");
 const userImage = document.getElementById("userImage");
+const confirmAlertChange = document.getElementById("confirmAlertChange");
 
 // Funcion de descarga datos usuario LOCALHOST
 function chargeUserData() {
@@ -37,10 +38,15 @@ formProfile.addEventListener('submit', event => {
     userDataObj.secondLastName = secondLastName.value
     userDataObj.telephone = telephone.value
     localStorage.setItem("userData", JSON.stringify(userDataObj));
-    console.log(localStorage.getItem("userData"))
+    confirmAlertChange.innerHTML =
+    `<div class="alert alert-success alert-dismissible" role="alert">
+         <div><p>¡Se han guardado los cambios!</p></div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div> `
+      event.preventDefault()
   }
   formProfile.classList.add('was-validated')
-}, false)
+}, false);
 
 // FUNCION QUE CODIFICA UNA IMAGEN A BASE 64
 async function encodeFileAsBase64URL(file) {

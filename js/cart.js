@@ -36,7 +36,7 @@ function showCart(currentCart) {
             <td scope="row"><img src="${article.image}" style="width: 50px; "></td>
             <td>${article.name}</td>
             <td>${article.currency} ${article.unitCost.toLocaleString()}</td>
-            <td><input id="${article.id}" type="number" value="${article.count}" min="1" style="width: 100px" class="text-center" oninput="updateSubTotal(${article.id})"></input></td>
+            <td><input id="${article.id}" type="number" value="${article.count}" min="1" style="width: 80px" class="text-center" oninput="updateSubTotal(${article.id})"></input></td>
             <td id="${tdId}">${article.currency} ${subTotal.toLocaleString()}</td>
             <td>
             

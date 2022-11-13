@@ -64,6 +64,6 @@ googleButtonAuth.addEventListener("click", async () => {
     window.location.href = "index.html";
 
   } catch (error) {
-    console.log(error)
+    alert("Error, por favor contacte al área técnica.")
   }
 })
